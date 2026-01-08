@@ -1,8 +1,35 @@
 import express from "express"
-import { testRoute } from "../controllers/testcontroller.js"
+import { testRoute } from "../controllers/testController.js"
+import { protect, restrictTo } from "../middlewares/authMiddleware.js"
 
 const router = express.Router()
 
 router.get("/", testRoute)
+
+// 🔐 Protected route (any logged-in user)
+router.get("/protected", protect, (req, res) => {
+  res.json({
+    success: true,
+    message: "You are logged in",
+    user: {
+      id: req.user._id,
+      email: req.user.email,
+      role: req.user.role,
+    },
+  })
+})
+
+// 🔒 Admin only
+router.get(
+  "/admin",
+  protect,
+  restrictTo("admin"),
+  (req, res) => {
+    res.json({
+      success: true,
+      message: "Welcome Admin",
+    })
+  }
+)
 
 export default router
