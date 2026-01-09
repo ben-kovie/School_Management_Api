@@ -2,7 +2,7 @@ import express from "express"
 import { testRoute } from "../controllers/testController.js"
 import { protect } from "../middlewares/authenticationMiddleware.js"
 import {restrictTo} from "../middlewares/authorizationMiddleware.js"
-
+import { forgotPassword, resetPassword } from "../controllers/resetPasswordController.js"
 const router = express.Router()
 
 router.get("/", testRoute)
@@ -32,5 +32,8 @@ router.get(
     })
   }
 )
+
+router.post("/forgot-password", forgotPassword)
+router.patch("/reset-password/:token", resetPassword)
 
 export default router
