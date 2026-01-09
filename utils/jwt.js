@@ -1,7 +1,13 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
-export const signToken = (payload) => {
-  return jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: "3d", // token expires in 1 day
-  })
-}
+export const signAccessToken = (payload) => {
+  return jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
+    expiresIn: "15m",
+  });
+};
+
+export const signRefreshToken = (payload) => {
+  return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: "7d",
+  });
+};

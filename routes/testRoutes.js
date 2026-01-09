@@ -1,6 +1,7 @@
 import express from "express"
 import { testRoute } from "../controllers/testController.js"
-import { protect, restrictTo } from "../middlewares/authMiddleware.js"
+import { protect } from "../middlewares/authenticationMiddleware.js"
+import {restrictTo} from "../middlewares/authorizationMiddleware.js"
 
 const router = express.Router()
 
