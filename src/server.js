@@ -1,8 +1,10 @@
 import dotenv from "dotenv"
 import app from "./app.js"
 import {connectDB} from "../config/connectDB.js"
+import helmet from "helmet";
 
 dotenv.config({path: "./config/.env"})
+app.use(helmet());
 
 const PORT = process.env.PORT || 5000
 
