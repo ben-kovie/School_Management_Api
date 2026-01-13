@@ -1,5 +1,7 @@
 import express from "express"
-import {register, login , refreshAccessToken,
+import {register,
+     login , 
+     refreshAccessToken,
     logout } from "../controllers/authcontroller.js"
 import { protect } from "../middlewares/authenticationMiddleware.js"
 
