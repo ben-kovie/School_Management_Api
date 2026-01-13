@@ -1,5 +1,5 @@
 import express from "express"
-import { testRoute } from "../controllers/testcontroller.js"
+import { testRoute } from "../controllers/testController.js"
 import { protect } from "../middlewares/authenticationMiddleware.js"
 import {restrictTo} from "../middlewares/authorizationMiddleware.js"
 import { forgotPassword, resetPassword } from "../controllers/resetPasswordController.js"
